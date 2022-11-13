@@ -100,7 +100,7 @@ def parse_status(homework):
 
 def check_tokens():
     """Функция проверяет доступность переменных окружения."""
-    return all(TELEGRAM_TOKEN, TELEGRAM_CHAT_ID, PRACTICUM_TOKEN)
+    return all([TELEGRAM_TOKEN, TELEGRAM_CHAT_ID, PRACTICUM_TOKEN])
 
 
 def main():
