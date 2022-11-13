@@ -100,9 +100,7 @@ def parse_status(homework):
 
 def check_tokens():
     """Функция проверяет доступность переменных окружения."""
-    if TELEGRAM_TOKEN and TELEGRAM_CHAT_ID and PRACTICUM_TOKEN:
-        return True
-    return False
+    return all(TELEGRAM_TOKEN, TELEGRAM_CHAT_ID, PRACTICUM_TOKEN)
 
 
 def main():
@@ -121,7 +119,7 @@ def main():
             if response:
                 current_timestamp = int(time.time())
                 response_ok = check_response(response)
-                if not bool(response_ok):
+                if not response_ok:
                     logger.debug('В ответе API,'
                                  ' статус домашней работы не обновлялся.')
                 else:
