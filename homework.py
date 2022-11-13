@@ -110,7 +110,7 @@ def main():
     logger.debug('Запуск программы.')
     if not check_tokens():
         logger.debug('Переменные окружения TELEGRAM_TOKEN, TELEGRAM_CHAT_ID,'
-                     ' PRACTICUM_TOKEN загружены.')
+                     ' PRACTICUM_TOKEN не загружены.')
         logger.critical('Завершение работы программы!')
         sys.exit()
     bot = telegram.Bot(token=TELEGRAM_TOKEN)
