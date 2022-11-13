@@ -101,17 +101,7 @@ def parse_status(homework):
 def check_tokens():
     """Функция проверяет доступность переменных окружения."""
     if TELEGRAM_TOKEN and TELEGRAM_CHAT_ID and PRACTICUM_TOKEN:
-        logger.debug('Переменные окружения TELEGRAM_TOKEN, TELEGRAM_CHAT_ID,'
-                     ' PRACTICUM_TOKEN загружены.')
         return True
-    if not TELEGRAM_TOKEN:
-        logger.critical('Отсутствует переменная окружения TELEGRAM_TOKEN!')
-    if not TELEGRAM_CHAT_ID:
-        logger.critical('Отсутствует переменная окружения'
-                        ' TELEGRAM_CHAT_ID!')
-    if not PRACTICUM_TOKEN:
-        logger.critical('Отсутствует переменная окружения'
-                        ' PRACTICUM_TOKEN!')
     return False
 
 
@@ -119,6 +109,8 @@ def main():
     """Основная логика работы бота."""
     logger.debug('Запуск программы.')
     if not check_tokens():
+        logger.debug('Переменные окружения TELEGRAM_TOKEN, TELEGRAM_CHAT_ID,'
+                     ' PRACTICUM_TOKEN загружены.')
         logger.critical('Завершение работы программы!')
         sys.exit()
     bot = telegram.Bot(token=TELEGRAM_TOKEN)
